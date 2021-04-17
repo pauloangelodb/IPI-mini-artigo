@@ -51,7 +51,7 @@ dados_api = json.load(fileJSON)
 fileLogRaw = open("logBasicRawDataWD.data", "w")
 weekMap = []
 fileActivity = open("activityWD.data", "w")
-fileActivity.write("Rank,Frequency\n")
+fileActivity.write("Dia,Frequência\n")
 checkWeekDays(dados_api, weekMap,fileLogRaw, fileActivity)
 fileLogRaw.close()
 
