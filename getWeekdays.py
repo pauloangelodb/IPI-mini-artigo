@@ -40,7 +40,7 @@ def checkWeekDays(dados_api, weekMap, fileLogRaw, fileActivity):
     print(contaWD)
             
     for i in range(len(contaWD)):
-        fileActivity.write(str(i)+": "+str(contaWD[i])+"\n")
+        fileActivity.write(str(i)+","+str(contaWD[i])+"\n")
                 
         
     
@@ -51,7 +51,7 @@ dados_api = json.load(fileJSON)
 fileLogRaw = open("logBasicRawDataWD.data", "w")
 weekMap = []
 fileActivity = open("activityWD.data", "w")
-fileActivity.write("Dia,Frequência\n")
+fileActivity.write("Dia,Frequencia\n")
 checkWeekDays(dados_api, weekMap,fileLogRaw, fileActivity)
 fileLogRaw.close()
 
