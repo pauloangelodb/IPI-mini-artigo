@@ -1,4 +1,6 @@
-# a API lê exatamente 6000 commits
+#gethours
+
+# a API lê exatamente 6000 commits, porém utilizaremos apenas 5678, referentes ao ano de 2021
 
 #conta a quantidade de commits por hora e imprime no arquivo:
 
@@ -6,12 +8,11 @@ def countHours(fileActivity, hourMap):
     
     horas =sorted(hourMap, reverse=True)
 
-    for i in hourMap:
+    for i in range(len(hourMap)):
 
+        fileActivity.write(str(i)+","+str(hourMap[i])+"\n")
         
-        fileActivity.write(str(hourMap.index(i))+","+str(i)+"\n")
-        
-                
+              
 def checkHours(dados_api, hourMap, fileLogRaw, fileActivity):
     
     hourMap = [0]*24
@@ -27,21 +28,25 @@ def checkHours(dados_api, hourMap, fileLogRaw, fileActivity):
 
 
             day = date.split("T")[0]
-            time = date.split("T")[1]
-            hour = time.split(":")[0]
+            year = day.split("-")[0]
+            #print(year)
+            if year =="2021":
+                
+                #"2021-04-14T17:55:56Z"
+                
+                
+                time = date.split("T")[1]
+                hour = time.split(":")[0]
+                
+                hourMap[int(hour)] += 1
+                
+                print(hour +","+ str(hourMap[int(hour)])+"\n")
 
-            #print(day +"\n"+hour+"\n\n")
-
-            #d = day + "," + hour + "\n"
-            
-
-            hourMap[int(hour)] += 1
-            
-            fileLogRaw.write(hour +","+ str(hourMap[int(hour)])+"\n")
+                fileLogRaw.write(hour +","+ str(hourMap[int(hour)])+"\n")
     soma =0
     for i in hourMap:
         soma += i
-    print (soma)            
+    #print (soma)            
             
     countHours(fileActivity, hourMap)
             
@@ -50,12 +55,11 @@ fileJSON = open('data.json', 'r', encoding='utf-8')
 dados_api = json.load(fileJSON)
 fileLogRaw = open("logBasicRawCH.data", "w")
 hourMap = []
-arqTeste2 = open("teste2.data", "w")
-arqTeste2.write("Hora, quantidade\n")
+arqHours = open("commitHours.data", "w")
+arqHours.write("Hora, quantidade\n")
 
-checkHours(dados_api, hourMap,fileLogRaw, arqTeste2)
+checkHours(dados_api, hourMap,fileLogRaw, arqHours)
 fileLogRaw.close()
-arqTeste2.close()
-
+arqHours.close()
 
 
