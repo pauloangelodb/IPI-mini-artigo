@@ -55,10 +55,3 @@ fileActivity.write("Rank,Frequency\n")
 checkWeekDays(dados_api, weekMap,fileLogRaw, fileActivity)
 fileLogRaw.close()
 
-fileActivity = open("activityWD.data", "w")
-fileActivity.write("Rank,Frequency\n")
-#computeAuthorRanks(fileActivity, weekMap)
-fileActivity.close()
-
-
-
