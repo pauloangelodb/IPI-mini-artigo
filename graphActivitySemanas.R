@@ -12,6 +12,9 @@ pl <- ggplot(df_activity,aes(x = Dia, y=Frequencia)) +
   theme_bw(base_size = 11) + geom_point(shape=1,size=3) + ylab("Quantidade (commits)") +
   geom_line(lwd=1.5) +
   scale_x_continuous(breaks=(0:6),labels= Dias) +
-  scale_y_continuous(limits = c(0, 1200))
+  scale_y_continuous(limits = c(0, 1200)) +
 
-print(pl)
+  theme(text = element_text(size=25), axis.text.x = element_text(angle=45, hjust=1))
+
+  print(pl)
+
