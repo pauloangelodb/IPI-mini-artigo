@@ -11,8 +11,8 @@ pl <- ggplot(df_activity,aes(x = Hora, y=Frequencia)) +
   theme_bw(base_size = 11) + geom_point(shape=1,size=3) + ylab("Quantidade (commits)") +
   geom_line(lwd=1.5)+
   scale_y_continuous(limits = c(0, 500)) +
-  scale_x_continuous(breaks=(0:23)) +
-
+  scale_x_continuous(breaks=c(0,3,6,9,12,15,18,21)) +
+  
   theme(text = element_text(size=20))
 
 print(pl)
